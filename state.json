@@ -1,9 +1,59 @@
 {
   "kakaopay": {
+    "https://tech.kakaopay.com/post/2026-kakaopay-developer-festival/": {
+      "description": "2026년 카카오페이 개발자 페스티벌 사내 행사 준비 과정부터 생생한 현장까지 함께 살펴보는 글입니다.",
+      "first_seen": "2026-09-17T10:33:37.749597+00:00",
+      "title": "2026년 카페개페, AI와 함께한 현장 스케치"
+    },
     "https://tech.kakaopay.com/post/ai-agent-1/": {
       "description": "AI Agent를 사용하기에 앞서 미리 알아두면 좋을 개념들에 대해 설명합니다.",
       "first_seen": "2026-09-17T10:19:27.291543+00:00",
       "title": "AI Agent, 넌 누구냐 1 - Tool, MCP, Skill, Harness는 무엇인가"
+    },
+    "https://tech.kakaopay.com/post/ai-platform/": {
+      "description": "카카오페이의 AI 플랫폼 구축 여정을 소개합니다.",
+      "first_seen": "2026-09-17T10:33:37.749597+00:00",
+      "title": "AI 플랫폼 GPU 도입부터 Kubeflow까지 도입기"
+    },
+    "https://tech.kakaopay.com/post/from-yarn-berry-to-pnpm/": {
+      "description": "카카오페이 프론트엔드 패키지 매니저 Yarn Berry에서 pnpm으로의 전환 과정과 결과를 공유합니다.",
+      "first_seen": "2026-09-17T10:33:37.749597+00:00",
+      "title": "그때는 맞고 지금은 틀리다. Yarn Berry에서 pnpm으로 패키지 매니저 전환기"
+    },
+    "https://tech.kakaopay.com/post/fsd/": {
+      "description": "복잡하게 얽힌 레포지토리의 구조적 문제를 FSD 아키텍처로 해결하고, 코드 위치의 명확성을 확보하여 확장 가능한 서비스 기반을 다진 실무 경험을 담았습니다.",
+      "first_seen": "2026-09-17T10:33:37.749597+00:00",
+      "title": "FSD 아키텍처 적용기 : \"이 코드는 어디에 넣어야 할까?\" FSD가 답해준 코드 위치의 명확성"
+    },
+    "https://tech.kakaopay.com/post/how-llm-works/": {
+      "description": "LLM 내부 동작 과정을 설명합니다.",
+      "first_seen": "2026-09-17T10:33:37.749597+00:00",
+      "title": "백엔드 개발자의 시선으로 풀어본 LLM 내부 동작 원리: 6단계로 쉽게 이해하기"
+    },
+    "https://tech.kakaopay.com/post/ifkakao-agentic-coding/": {
+      "description": "에이전틱 코딩에서 코드 생성 및 환각 문제를 해결하고 개발자의 역할을 검증 중심으로 전환하는 SDD(스펙 기반 개발) 방법론 도입 사례를 공유합니다.",
+      "first_seen": "2026-09-17T10:33:37.749597+00:00",
+      "title": "SDD (spec-kit) 에이전트 코딩 실전기"
+    },
+    "https://tech.kakaopay.com/post/jvm-warm-up/": {
+      "description": "굿딜 서비스를 운영하며 마주친 배포 직후 응답 지연 문제를 해결하기 위한 과정을 공유하고자 합니다.",
+      "first_seen": "2026-09-17T10:33:37.749597+00:00",
+      "title": "배포 직후 발생하는 응답 지연을 해결하기 위한 여정 (feat. JVM 웜업)"
+    },
+    "https://tech.kakaopay.com/post/kakaopay-hackathon-face-kiosk-solution/": {
+      "description": "카카오페이 AWS 해커톤에 참여한 Face Five팀의 경험을 공유합니다.",
+      "first_seen": "2026-09-17T10:33:37.749597+00:00",
+      "title": "안면 인식과 초개인화 키오스크 정도는 해커톤이면 충분하지 않나?"
+    },
+    "https://tech.kakaopay.com/post/kakaopay-hackathon-paygenie/": {
+      "description": "2025 카페톤 with AWS에서 카카오페이의 금융 AI 컨시어지 페이지니를 기획, 개발한 경험을 공유합니다.",
+      "first_seen": "2026-09-17T10:33:37.749597+00:00",
+      "title": "\"페이지니가 찾아올게요\" 금융 AI 컨시어지, 페이지니"
+    },
+    "https://tech.kakaopay.com/post/kakaopayins-fe-common-component/": {
+      "description": "공통 컴포넌트는 언제 만들어야 하고, 언제 나누거나 정리해야 할까? 공통 컴포넌트를 건강하게 기르기 위한 고민을 기록합니다.",
+      "first_seen": "2026-09-17T10:33:37.749597+00:00",
+      "title": "공통 컴포넌트를 건강하게 기르기 위한 고민"
     },
     "https://tech.kakaopay.com/post/kakaopayins-legacy-improvement-with-aop/": {
       "description": "AOP 기반 Shadow 비교 로직으로 운영 환경에서 안전하게 레거시를 걷어내는 과정을 공유합니다.",
@@ -20,10 +70,35 @@
       "first_seen": "2026-09-17T10:19:27.291543+00:00",
       "title": "Spring Data MongoDB 가이드: 연관관계 설계와 업데이트 전략"
     },
+    "https://tech.kakaopay.com/post/multiverse/": {
+      "description": "누구나 가상 기기를 활용해 페이 서비스를 쉽게 테스트할 수 있는 플랫폼, 멀티버스를 소개합니다.",
+      "first_seen": "2026-09-17T10:33:37.749597+00:00",
+      "title": "기기 없이 앱을 테스트하는 법, 멀티버스가 알려드립니다"
+    },
+    "https://tech.kakaopay.com/post/pallas-v2-log-platform/": {
+      "description": "카카오페이증권의 차세대 로깅 플랫폼 구축기. OpenTelemetry와 ClickHouse를 활용해 PB 규모의 로그를 효율적으로 처리하는 방법을 소개합니다.",
+      "first_seen": "2026-09-17T10:33:37.749597+00:00",
+      "title": "일 41TB, 200억 건의 로그를 ClickStack으로 실시간 처리하기 - 호그와트 도서관 프로젝트"
+    },
+    "https://tech.kakaopay.com/post/pink-ward/": {
+      "description": "카카오페이증권의 서비스 및 장애 상태 가시화를 위한 프로젝트를 소개합니다.",
+      "first_seen": "2026-09-17T10:33:37.749597+00:00",
+      "title": "서비스에 와드 박기: 서비스 상태 가시화 프로젝트, 핑크와드를 소개합니다."
+    },
     "https://tech.kakaopay.com/post/querydsl-paging-strategy/": {
       "description": "Count 쿼리 병목부터 Offset 풀 스캔 문제, 커서 기반 페이지네이션, Batch Insert/Update까지 — 실측 데이터로 검증한 Querydsl 대량 데이터 처리 전략을 정리합니다.",
       "first_seen": "2026-09-17T10:19:27.291543+00:00",
       "title": "Querydsl 대량 데이터 처리 완전 정리: Count 병목부터 커서 기반 페이지네이션, Batch Insert/Update까지"
+    },
+    "https://tech.kakaopay.com/post/spring-batch-partitioning/": {
+      "description": "Spring Batch Partitioning, Cursor 기반 ItemReader, Bulk Operations를 활용해 수억 건 데이터 처리 성능을 향상시킨 실전 경험을 공유합니다.",
+      "first_seen": "2026-09-17T10:33:37.749597+00:00",
+      "title": "수억 건의 데이터, 맛있게 쪼개 먹는 방법 (with. Partitioning)"
+    },
+    "https://tech.kakaopay.com/post/tam-connect/": {
+      "description": "경쟁사가 아닌 동료로, 카카오페이와 토스의 기술지원(TAM) 담당자들이 처음 한자리에 모였습니다.",
+      "first_seen": "2026-09-17T10:33:37.749597+00:00",
+      "title": "2025 TAM CONNECT: 카카오페이 x 토스, 기술지원의 미래를 함께 그리다"
     }
   }
 }
