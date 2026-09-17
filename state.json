@@ -1,0 +1,29 @@
+{
+  "kakaopay": {
+    "https://tech.kakaopay.com/post/ai-agent-1/": {
+      "description": "AI Agent를 사용하기에 앞서 미리 알아두면 좋을 개념들에 대해 설명합니다.",
+      "first_seen": "2026-09-17T10:19:27.291543+00:00",
+      "title": "AI Agent, 넌 누구냐 1 - Tool, MCP, Skill, Harness는 무엇인가"
+    },
+    "https://tech.kakaopay.com/post/kakaopayins-legacy-improvement-with-aop/": {
+      "description": "AOP 기반 Shadow 비교 로직으로 운영 환경에서 안전하게 레거시를 걷어내는 과정을 공유합니다.",
+      "first_seen": "2026-09-17T10:19:27.291543+00:00",
+      "title": "안전하게 레거시 코드 옮겨 보기"
+    },
+    "https://tech.kakaopay.com/post/kakaopayins-slow-pr-fast-dev/": {
+      "description": "AI 도입 이후, 이천 줄짜리 PR 앞에서 approve를 누르는 손이 망설여진 적 있다면 이 글이 도움이 될 수 있습니다.",
+      "first_seen": "2026-09-17T10:19:27.291543+00:00",
+      "title": "PR을 더 느리게 만들기 위한 고민"
+    },
+    "https://tech.kakaopay.com/post/mongodb-nplus1-issue/": {
+      "description": "Spring Data MongoDB에서 연관관계 설계 시 발생하는 N+1 문제를 해결하는 방법과, 도큐먼트를 안전하게 업데이트하는 전략을 정리해 공유합니다.",
+      "first_seen": "2026-09-17T10:19:27.291543+00:00",
+      "title": "Spring Data MongoDB 가이드: 연관관계 설계와 업데이트 전략"
+    },
+    "https://tech.kakaopay.com/post/querydsl-paging-strategy/": {
+      "description": "Count 쿼리 병목부터 Offset 풀 스캔 문제, 커서 기반 페이지네이션, Batch Insert/Update까지 — 실측 데이터로 검증한 Querydsl 대량 데이터 처리 전략을 정리합니다.",
+      "first_seen": "2026-09-17T10:19:27.291543+00:00",
+      "title": "Querydsl 대량 데이터 처리 완전 정리: Count 병목부터 커서 기반 페이지네이션, Batch Insert/Update까지"
+    }
+  }
+}
