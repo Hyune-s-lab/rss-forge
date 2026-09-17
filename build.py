@@ -28,7 +28,7 @@ PUBLIC = ROOT / "public"
 STATE_PATH = ROOT / "state.json"
 FAILURE_MARKER = ROOT / ".failures"
 
-UA = "rss-forge/1.0 (+https://github.com/USER/rss-forge)"
+UA = "rss-forge/1.0 (+https://github.com/Hyune-s-lab/rss-forge)"
 TIMEOUT = 20
 
 
