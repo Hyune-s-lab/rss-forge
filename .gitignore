@@ -1,0 +1,5 @@
+__pycache__/
+public/
+state.json.bak
+.failures
+tests/_out/

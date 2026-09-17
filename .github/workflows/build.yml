@@ -1,0 +1,76 @@
+name: build feeds
+
+on:
+  schedule:
+    - cron: '17 */6 * * *'   # 6시간마다 (UTC 기준, 분은 17분으로 분산)
+  workflow_dispatch:          # 수동 실행 버튼
+  push:
+    branches: [main]
+    paths:
+      - sites.yml
+      - build.py
+      - .github/workflows/build.yml
+
+permissions:
+  contents: write   # state.json 커밋
+  pages: write      # Pages 배포
+  id-token: write
+
+concurrency:
+  group: rss-forge
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Smoke test (셀렉터/렌더러)
+        run: python3 tests/test_offline.py
+
+      - uses: actions/configure-pages@v5
+        id: pages
+
+      - name: Build feeds
+        env:
+          FEED_BASE_URL: ${{ steps.pages.outputs.base_url }}
+        run: python3 build.py
+
+      - name: Commit state
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state.json
+          git diff --staged --quiet || git commit -m "chore: update feed state [skip ci]"
+          git push
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - id: deploy
+        uses: actions/deploy-pages@v4
+
+      # 수집이 깨지면 조용히 빈 피드가 나가지 않도록 마지막에 빨간 X 를 낸다.
+      - name: Fail if any site broke
+        run: |
+          if [ -f .failures ]; then
+            {
+              echo "### 수집 실패한 사이트"
+              echo '```'
+              cat .failures
+              echo '```'
+            } >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
