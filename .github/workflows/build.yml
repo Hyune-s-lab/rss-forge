@@ -2,7 +2,7 @@ name: build feeds
 
 on:
   schedule:
-    - cron: '17 */6 * * *'   # 6시간마다 (UTC 기준, 분은 17분으로 분산)
+    - cron: '17 * * * *'     # 매시 17분 (정각 몰림을 피한다)
   workflow_dispatch:          # 수동 실행 버튼
   push:
     branches: [main]

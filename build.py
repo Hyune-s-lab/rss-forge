@@ -111,6 +111,26 @@ def og_description(html: str) -> str | None:
 
 # --------------------------------------------------------------------- build
 
+def iter_list_pages(cfg: dict, session: requests.Session):
+    """목록 1페이지부터 차례로 (url, html) 을 내놓는다.
+
+    page_url_tpl 이 없으면 list_url 한 장만 본다. 있으면 {n} 에 2, 3, ... 을 넣어
+    max_pages 까지 따라간다. 중간에 실패하면 거기서 멈추되 이미 받은 페이지는 살린다.
+    """
+    yield cfg["list_url"], fetch(session, cfg["list_url"])
+
+    tpl = cfg.get("page_url_tpl")
+    if not tpl:
+        return
+    for n in range(2, int(cfg.get("max_pages", 10)) + 1):
+        url = tpl.format(n=n)
+        try:
+            yield url, fetch(session, url)
+        except requests.RequestException as exc:
+            print(f"::warning::{cfg['id']}: {n}페이지 조회 실패 — 여기서 멈춥니다 ({exc})")
+            return
+
+
 def build_site(cfg: dict, session: requests.Session, state: dict) -> int:
     site_id = cfg["id"]
     tz = ZoneInfo(cfg.get("tz", "Asia/Seoul"))
@@ -119,48 +139,69 @@ def build_site(cfg: dict, session: requests.Session, state: dict) -> int:
     seen: dict = state.setdefault(site_id, {})
     now = datetime.now(timezone.utc)
 
-    html = fetch(session, cfg["list_url"])
-    soup = BeautifulSoup(html, "lxml")
-    items = soup.select(cfg["item_sel"])
-    if not items:
-        raise RuntimeError(f"item_sel '{cfg['item_sel']}' 이 아무것도 못 잡았습니다 (마크업 변경?)")
-
     entries: list[dict] = []
-    for item in items[: limit * 2]:  # 중복 제거 여유분
-        link = extract_link(item, cfg, cfg["list_url"])
-        title = extract_text(item, cfg.get("title_sel")) or (item.get_text(" ", strip=True)[:120] or None)
-        if not link or not title:
-            continue
-        if any(e["link"] == link for e in entries):
-            continue
+    examined: set[str] = set()
 
-        record = seen.setdefault(link, {})
-        if "first_seen" not in record:
-            record["first_seen"] = now.isoformat()
+    for page_no, (page_url, html) in enumerate(iter_list_pages(cfg, session), start=1):
+        soup = BeautifulSoup(html, "lxml")
+        items = soup.select(cfg["item_sel"])
+        if not items:
+            if page_no == 1:
+                raise RuntimeError(
+                    f"item_sel '{cfg['item_sel']}' 이 아무것도 못 잡았습니다 (마크업 변경?)"
+                )
+            print(f"  · {site_id}: {page_no}페이지에 글이 없어 여기서 멈춥니다")
+            break
 
-        published = parse_date(
-            extract_text(item, cfg.get("date_sel"), cfg.get("date_attr")), formats, tz
-        ) or datetime.fromisoformat(record["first_seen"])
+        fresh = 0
+        for item in items:
+            link = extract_link(item, cfg, page_url)
+            if not link or link in examined:
+                continue
+            examined.add(link)
+            fresh += 1
 
-        description = record.get("description")
-        if cfg.get("enrich") and description is None:
-            try:
-                description = og_description(fetch(session, link)) or ""
-            except requests.RequestException as exc:
-                print(f"::warning::{site_id}: 본문 조회 실패 {link} ({exc})")
-                description = ""
-            record["description"] = description
+            title = extract_text(item, cfg.get("title_sel")) or (
+                item.get_text(" ", strip=True)[:120] or None
+            )
+            if not title:
+                continue
 
-        record["title"] = title
-        entries.append(
-            {
-                "link": link,
-                "title": title,
-                "description": description or title,
-                "published": published,
-            }
-        )
+            record = seen.setdefault(link, {})
+            if "first_seen" not in record:
+                record["first_seen"] = now.isoformat()
+
+            published = parse_date(
+                extract_text(item, cfg.get("date_sel"), cfg.get("date_attr")), formats, tz
+            ) or datetime.fromisoformat(record["first_seen"])
+
+            description = record.get("description")
+            if cfg.get("enrich") and description is None:
+                try:
+                    description = og_description(fetch(session, link)) or ""
+                except requests.RequestException as exc:
+                    print(f"::warning::{site_id}: 본문 조회 실패 {link} ({exc})")
+                    description = ""
+                record["description"] = description
+
+            record["title"] = title
+            entries.append(
+                {
+                    "link": link,
+                    "title": title,
+                    "description": description or title,
+                    "published": published,
+                }
+            )
+            if len(entries) >= limit:
+                break
+
         if len(entries) >= limit:
+            break
+        # 범위를 넘은 페이지 번호에 1페이지를 그대로 돌려주는 사이트가 있다.
+        # 새 링크가 하나도 없으면 더 파고들어도 같은 글만 나온다.
+        if page_no > 1 and fresh == 0:
+            print(f"  · {site_id}: {page_no}페이지에 새 글이 없어 여기서 멈춥니다")
             break
 
     entries.sort(key=lambda e: e["published"], reverse=True)
