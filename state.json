@@ -10,6 +10,11 @@
       "first_seen": "2026-09-17T10:19:27.291543+00:00",
       "title": "AI Agent, 넌 누구냐 1 - Tool, MCP, Skill, Harness는 무엇인가"
     },
+    "https://tech.kakaopay.com/post/ai-agent-2/": {
+      "description": "네이티브 개발자의 FE 개발을 돕기 위해 컨벤션과 개발 방식을 담은 AI Agent 하네스를 만들고 운영하며 배운 점을 돌아봅니다.",
+      "first_seen": "2026-11-03T15:06:36.661133+00:00",
+      "title": "AI Agent, 넌 누구냐 2 - 네이티브 개발자를 위한 FE 하네스를 만들고, 레거시가 되기까지"
+    },
     "https://tech.kakaopay.com/post/ai-platform/": {
       "description": "카카오페이의 AI 플랫폼 구축 여정을 소개합니다.",
       "first_seen": "2026-09-17T10:33:37.749597+00:00",
