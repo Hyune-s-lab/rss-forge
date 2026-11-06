@@ -40,6 +40,11 @@
       "first_seen": "2026-09-17T10:33:37.749597+00:00",
       "title": "SDD (spec-kit) 에이전트 코딩 실전기"
     },
+    "https://tech.kakaopay.com/post/ifkakao26-ai-change-organization-preparation/": {
+      "description": "AI가 답변을 넘어 일을 하는 시대, if(kakao)26 현장에서 본 4가지 변화와 기술문화 담당자가 AX 활동에서 정리한 조직의 준비 과제를 공유합니다.",
+      "first_seen": "2026-11-06T09:23:22.368805+00:00",
+      "title": "if(kakao)26에서 확인한 AI의 변화, 조직은 무엇을 준비해야 할까?"
+    },
     "https://tech.kakaopay.com/post/jvm-warm-up/": {
       "description": "굿딜 서비스를 운영하며 마주친 배포 직후 응답 지연 문제를 해결하기 위한 과정을 공유하고자 합니다.",
       "first_seen": "2026-09-17T10:33:37.749597+00:00",
