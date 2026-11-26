@@ -80,6 +80,11 @@
       "first_seen": "2026-09-17T10:19:27.291543+00:00",
       "title": "Spring Data MongoDB 가이드: 연관관계 설계와 업데이트 전략"
     },
+    "https://tech.kakaopay.com/post/multi-agent-ai-code-reviewer-jorgit/": {
+      "description": "AI 코드 리뷰어 jorgit에 상호 검증 구조와 역할 기반 멀티 에이전트 설계를 적용해 신뢰성과 비용 효율을 함께 확보한 과정을 소개합니다.",
+      "first_seen": "2026-11-26T05:03:20.371683+00:00",
+      "title": "Agentic AI, 멀티 에이전트로 신뢰와 비용 효율을 설계하다"
+    },
     "https://tech.kakaopay.com/post/multiverse/": {
       "description": "누구나 가상 기기를 활용해 페이 서비스를 쉽게 테스트할 수 있는 플랫폼, 멀티버스를 소개합니다.",
       "first_seen": "2026-09-17T10:33:37.749597+00:00",
